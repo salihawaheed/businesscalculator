@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizCalc Pro - Free Professional Business Calculators for Smarter Decisions</title>
+    <meta name="description" content="20 free online business calculators for profit, margin, ROI, loan, VAT, tax, discount, markup, and revenue calculations.">
+    <meta name="keywords" content="business calculator, profit margin calculator, ROI calculator, break-even calculator, compound interest, VAT calculator">
+    <meta property="og:title" content="BizCalc Pro - Modern Business Calculator Suite">
+    <meta property="og:description" content="Calculate Profit, Loss, Margin, ROI, Break-even, Taxes & Loans instantly with accurate financial formulas.">
+    <meta property="og:type" content="website">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-subtle: #f1f5f9;
+            --border-color: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent-primary: #3b82f6;
+            --accent-hover: #2563eb;
+            --purple-accent: #8b5cf6;
+            --emerald-accent: #10b981;
+            --rose-accent: #f43f5e;
+            --amber-accent: #f59e0b;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.06);
+            --shadow-lg: 0 10px 25px rgba(15, 23, 42, 0.1);
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dark {
+            --bg-main: #0b0f19;
+            --bg-card: #151c2c;
+            --bg-card-subtle: #1e293b;
+            --border-color: #2a364f;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 14px rgba(0,0,0,0.4);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.5;
+            transition: var(--transition);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--purple-accent));
+            color: white;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-theme-toggle {
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .btn-theme-toggle:hover {
+            transform: scale(1.05);
+            color: var(--accent-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-primary);
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        /* Search Controls */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-size: 1rem;
+            box-shadow: var(--shadow-md);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Categories Bar */
+        .categories-bar {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .cat-btn {
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cat-btn.active, .cat-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+        }
+
+        /* Calculator Grid */
+        .grid-section {
+            padding-bottom: 60px;
+        }
+
+        .grid-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .grid-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .calc-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-primary);
+        }
+
+        .calc-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+        }
+
+        .calc-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .calc-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .calc-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+
+        /* Calculator Modal / Active View */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .calc-modal {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .calc-modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            background: var(--bg-card);
+            z-index: 10;
+        }
+
+        .modal-title-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-close {
+            background: var(--bg-card-subtle);
+            border: none;
+            color: var(--text-muted);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--rose-accent);
+            color: white;
+        }
+
+        .modal-body {
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 2rem; }
+        }
+
+        /* Form Controls inside Modal */
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-secondary);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background: var(--bg-card-subtle);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .input-field:focus {
+            border-color: var(--accent-primary);
+            background: var(--bg-card);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        .input-unit {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .btn-calc {
+            flex: 2;
+            padding: 12px 20px;
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-calc:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-reset {
+            flex: 1;
+            padding: 12px 16px;
+            background: var(--bg-card-subtle);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-reset:hover {
+            background: var(--border-color);
+        }
+
+        /* Results Display */
+        .result-box {
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .result-main {
+            text-align: center;
+            padding-bottom: 20px;
+            border-b: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .result-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--emerald-accent);
+            margin: 8px 0;
+        }
+
+        .result-value.negative {
+            color: var(--rose-accent);
+        }
+
+        .result-breakdown {
+            space-y: 10px;
+        }
+
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .breakdown-row span:first-child {
+            color: var(--text-muted);
+        }
+
+        .breakdown-row span:last-child {
+            font-weight: 600;
+        }
+
+        .btn-copy {
+            margin-top: 16px;
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-copy:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        /* Formula & Explanations Accordion */
+        .explanation-section {
+            grid-column: span 2;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .explanation-section { grid-column: span 1; }
+        }
+
+        .explanation-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .formula-card {
+            background: var(--bg-card-subtle);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            color: var(--purple-accent);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--purple-accent);
+        }
+
+        .example-box {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* History Section */
+        .history-section {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 50px 0;
+        }
+
+        .history-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            background: var(--bg-card-subtle);
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+
+        /* FAQ Accordion */
+        .faq-section {
+            padding: 60px 0;
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 30px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-question {
+            padding: 18px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            padding: 0 24px 18px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 30;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--text-primary);
+            color: var(--bg-card);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-calculator"></i></div>
+                <span>BizCalc<span style="color:var(--accent-primary)">Pro</span></span>
+            </a>
+            <div class="nav-actions">
+                <button class="btn-theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge"><i class="fa-solid fa-bolt"></i> 100% Free Financial Suite</div>
+            <h1>Free Business Calculators for Smarter Decisions</h1>
+            <p>Instant, precise financial analysis for entrepreneurs, managers, e-commerce stores, and financial analysts.</p>
+
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search calculators (e.g. ROI, Profit Margin, VAT, Loan)...">
+            </div>
+
+            <!-- Categories -->
+            <div class="categories-bar" id="categoryFilter">
+                <button class="cat-btn active" data-cat="all">All (20)</button>
+                <button class="cat-btn" data-cat="profitability">Profitability</button>
+                <button class="cat-btn" data-cat="sales">Sales & Tax</button>
+                <button class="cat-btn" data-cat="finance">Finance & Investment</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CALCULATOR GRID -->
+    <section class="grid-section">
+        <div class="container">
+            <div class="grid-header">
+                <h2 class="grid-title" id="gridHeading">All Calculators</h2>
+                <span style="font-size: 0.85rem; color: var(--text-muted);" id="calcCount">20 Calculators Available</span>
+            </div>
+
+            <div class="calc-grid" id="calcGrid">
+                <!-- Dynamically populated calculator cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULATION HISTORY SECTION -->
+    <section class="history-section">
+        <div class="container">
+            <div class="history-header">
+                <h3 style="font-size: 1.2rem; font-weight:700;"><i class="fa-solid fa-clock-rotate-left" style="color:var(--accent-primary)"></i> Recent Calculations</h3>
+                <button id="btnClearHistory" style="background:none; border:none; color:var(--rose-accent); cursor:pointer; font-size:0.85rem; font-weight:600;">Clear History</button>
+            </div>
+            <div class="history-list" id="historyList">
+                <div style="color:var(--text-muted); font-size:0.85rem; text-align:center; padding:20px;">No calculations performed yet.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 1.8rem; font-weight: 800; margin-bottom: 10px;">Frequently Asked Questions</h2>
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.95rem;">Everything you need to know about financial ratios and formulas.</p>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">What is the difference between Profit Margin and Markup? <i class="fa-solid fa-chevron-down faq-icon"></i></div>
+                    <div class="faq-answer">Profit Margin is calculated as profit divided by revenue (selling price). Markup is profit divided by cost. Margin shows what percentage of sales is profit, while markup shows how much you added to the cost price.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How is Break-Even Point calculated? <i class="fa-solid fa-chevron-down faq-icon"></i></div>
+                    <div class="faq-answer">Break-Even Point (Units) = Fixed Costs / (Price per Unit - Variable Cost per Unit). It tells you how many products you must sell to cover all your costs without making a loss or profit.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Are these business formulas accurate? <i class="fa-solid fa-chevron-down faq-icon"></i></div>
+                    <div class="faq-answer">Yes, all calculators use standard GAAP (Generally Accepted Accounting Principles) and standard financial interest and compounding math formulas.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2026 BizCalc Pro. Precision financial tools for business growth.</p>
+        </div>
+    </footer>
+
+    <!-- CALCULATOR MODAL -->
+    <div class="modal-overlay" id="calcModal">
+        <div class="calc-modal">
+            <div class="modal-header">
+                <div class="modal-title-box">
+                    <div class="calc-icon" id="modalIcon" style="margin-bottom:0; width:40px; height:40px; font-size:1rem;"></div>
+                    <div>
+                        <h3 id="modalTitle" style="font-size: 1.1rem; font-weight: 700;"></h3>
+                        <p id="modalCategory" style="font-size: 0.75rem; color: var(--text-muted); font-weight:600; text-transform:uppercase;"></p>
+                    </div>
+                </div>
+                <button class="modal-close" id="modalClose"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Left: Form Inputs -->
+                <div id="modalInputs">
+                    <!-- Dynamic Input Fields -->
+                </div>
+
+                <!-- Right: Results display -->
+                <div class="result-box">
+                    <div>
+                        <div class="result-main">
+                            <div class="result-label" id="mainResultLabel">Result</div>
+                            <div class="result-value" id="mainResultValue">$0.00</div>
+                        </div>
+
+                        <div class="result-breakdown" id="resultBreakdown">
+                            <!-- Additional Breakdown Rows -->
+                        </div>
+                    </div>
+
+                    <button class="btn-copy" id="btnCopyResult"><i class="fa-solid fa-copy"></i> Copy Calculation Result</button>
+                </div>
+
+                <!-- Bottom: Formula & Explanation -->
+                <div class="explanation-section">
+                    <div class="explanation-title"><i class="fa-solid fa-square-root-variable" style="color:var(--purple-accent)"></i> Formula & Math</div>
+                    <div class="formula-card" id="modalFormula">Formula goes here...</div>
+
+                    <div class="explanation-title" style="margin-top:16px;"><i class="fa-solid fa-lightbulb" style="color:var(--amber-accent)"></i> Example & Usage</div>
+                    <div class="example-box" id="modalExample">Example calculation explanation...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" id="backToTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast">Copied to clipboard!</div>
+
+    <!-- JAVASCRIPT APPLICATION -->
+    <script>
+        /**
+         * 20 BUSINESS CALCULATORS REGISTRY (Formulas, Inputs, Math)
+         */
+        const CALCULATORS = [
+            {
+                id: 'profit',
+                title: 'Profit Calculator',
+                cat: 'profitability',
+                icon: 'fa-chart-line',
+                desc: 'Calculate total net profit or loss based on total revenue and total expenses.',
+                formula: 'Net Profit = Total Revenue - Total Costs',
+                example: 'If revenue is $10,000 and total costs are $6,500, Net Profit = $10,000 - $6,500 = $3,500.',
+                inputs: [
+                    { id: 'revenue', label: 'Total Revenue ($)', type: 'number', default: 10000 },
+                    { id: 'expenses', label: 'Total Expenses ($)', type: 'number', default: 6500 }
+                ],
+                calc: (v) => {
+                    const profit = v.revenue - v.expenses;
+                    const margin = v.revenue > 0 ? (profit / v.revenue) * 100 : 0;
+                    return {
+                        mainLabel: 'Total Net Profit',
+                        mainValue: '$' + profit.toLocaleString(undefined, {minimumFractionDigits: 2}),
+                        isNegative: profit < 0,
+                        rows: [
+                            { label: 'Total Revenue', val: '$' + v.revenue.toLocaleString() },
+                            { label: 'Total Expenses', val: '$' + v.expenses.toLocaleString() },
+                            { label: 'Profit Margin', val: margin.toFixed(2) + '%' }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'loss',
+                title: 'Loss Calculator',
+                cat: 'profitability',
+                icon: 'fa-arrow-trend-down',
+                desc: 'Determine financial loss percentage when selling below cost price.',
+                formula: 'Loss = Cost Price - Selling Price | Loss % = (Loss / Cost Price) × 100',
+                example: 'Cost price $500, sold for $400 -> Loss = $100 (20% Loss).',
+                inputs: [
+                    { id: 'cost', label: 'Cost Price ($)', type: 'number', default: 500 },
+                    { id: 'selling', label: 'Selling Price ($)', type: 'number', default: 400 }
+                ],
+                calc: (v) => {
+                    const loss = v.cost - v.selling;
+                    const lossPct = v.cost > 0 ? (loss / v.cost) * 100 : 0;
+                    return {
+                        mainLabel: loss >= 0 ? 'Total Loss' : 'Total Net Profit',
+                        mainValue: '$' + Math.abs(loss).toLocaleString(undefined, {minimumFractionDigits: 2}),
+                        isNegative: loss > 0,
+                        rows: [
+                            { label: 'Cost Price', val: '$' + v.cost.toLocaleString() },
+                            { label: 'Selling Price', val: '$' + v.selling.toLocaleString() },
+                            { label: 'Loss Percentage', val: lossPct.toFixed(2) + '%' }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'profit-margin',
+                title: 'Profit Margin Calculator',
+                cat: 'profitability',
+                icon: 'fa-percent',
+                desc: 'Calculate gross profit margin percentage relative to product selling revenue.',
+                formula: 'Gross Margin % = ((Revenue - Cost) / Revenue) × 100',
+                example: 'Selling price $100, cost $60 -> Gross Margin = (($100 - $60) / $100) × 100 = 40%.',
+                inputs: [
+                    { id: 'revenue', label: 'Revenue / Selling Price ($)', type: 'number', default: 100 },
+                    { id: 'cost', label: 'Cost of Goods Sold (COGS) ($)', type: 'number', default: 60 }
+                ],
+                calc: (v) => {
+                    const profit = v.revenue - v.cost;
+                    const margin = v.revenue > 0 ? (profit / v.revenue) * 100 : 0;
+                    return {
+                        mainLabel: 'Profit Margin',
+                        mainValue: margin.toFixed(2) + '%',
+                        rows: [
+                            { label: 'Gross Profit ($)', val: '$' + profit.toFixed(2) },
+                            { label: 'Revenue', val: '$' + v.revenue.toFixed(2) },
+                            { label: 'COGS Cost', val: '$' + v.cost.toFixed(2) }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'profit-percentage',
+                title: 'Profit Percentage Calculator',
+                cat: 'profitability',
+                icon: 'fa-arrow-trend-up',
+                desc: 'Find percentage increase or return generated on cost capital.',
+                formula: 'Profit % = (Profit / Cost Price) × 100',
+                example: 'Buy item for $80, sell for $120. Profit = $40. Profit % = ($40 / $80) × 100 = 50%.',
+                inputs: [
+                    { id: 'cost', label: 'Cost Price ($)', type: 'number', default: 80 },
+                    { id: 'selling', label: 'Selling Price ($)', type: 'number', default: 120 }
+                ],
+                calc: (v) => {
+                    const profit = v.selling - v.cost;
+                    const pct = v.cost > 0 ? (profit / v.cost) * 100 : 0;
+                    return {
+                        mainLabel: 'Profit Percentage',
+                        mainValue: pct.toFixed(2) + '%',
+                        rows: [
+                            { label: 'Net Profit ($)', val: '$' + profit.toFixed(2) },
+                            { label: 'Cost Price', val: '$' + v.cost.toFixed(2) },
+                            { label: 'Selling Price', val: '$' + v.selling.toFixed(2) }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'markup',
+                title: 'Markup Calculator',
+                cat: 'sales',
+                icon: 'fa-tags',
+                desc: 'Calculate selling price and profit markup percentage over product cost.',
+                formula: 'Selling Price = Cost + (Cost × Markup %) | Markup % = ((Price - Cost) / Cost) × 100',
+                example: 'Cost $50 with 40% markup -> Selling Price = $50 + ($50 × 0.40) = $70.',
+                inputs: [
+                    { id: 'cost', label: 'Cost of Product ($)', type: 'number', default: 50 },
+                    { id: 'markup', label: 'Desired Markup (%)', type: 'number', default: 40 }
+                ],
+                calc: (v) => {
+                    const profit = v.cost * (v.markup / 100);
+                    const sellingPrice = v.cost + profit;
+                    const margin = sellingPrice > 0 ? (profit / sellingPrice) * 100 : 0;
+                    return {
+                        mainLabel: 'Selling Price',
+                        mainValue: '$' + sellingPrice.toFixed(2),
+                        rows: [
+                            { label: 'Dollar Markup Amount', val: '$' + profit.toFixed(2) },
+                            { label: 'Equivalent Profit Margin', val: margin.toFixed(2) + '%' },
+                            { label: 'Original Cost', val: '$' + v.cost.toFixed(2) }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'revenue',
+                title: 'Revenue Calculator',
+                cat: 'sales',
+                icon: 'fa-coins',
+                desc: 'Calculate total gross sales revenue based on unit price and quantity sold.',
+                formula: 'Total Revenue = Price Per Unit × Total Units Sold',
+                example: 'Selling 250 units at $45 each -> Total Revenue = 250 × $45 = $11,250.',
+                inputs: [
+                    { id: 'price', label: 'Price Per Unit ($)', type: 'number', default: 45 },
+                    { id: 'units', label: 'Units Sold', type: 'number', default: 250 }
+                ],
+                calc: (v) => {
+                    const total = v.price * v.units;
+                    return {
+                        mainLabel: 'Total Revenue',
+                        mainValue: '$' + total.toLocaleString(undefined, {minimumFractionDigits: 2}),
+                        rows: [
+                            { label: 'Unit Price', val: '$' + v.price.toFixed(2) },
+                            { label: 'Total Volume', val: v.units.toLocaleString() + ' units' }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'sales-tax',
+                title: 'Sales Tax Calculator',
+                cat: 'sales',
+                icon: 'fa-receipt',
+                desc: 'Calculate total price including state or local sales tax rates.',
+                formula: 'Sales Tax Amount = Net Price × (Tax Rate / 100) | Total = Net Price + Tax',
+                example: 'Price $200 with 8% sales tax -> Tax = $16, Final Total = $216.',
+                inputs: [
+                    { id: 'amount', label: 'Net Amount ($)', type: 'number', default: 200 },
+                    { id: 'taxRate', label: 'Sales Tax Rate (%)', type: 'number', default: 8 }
+                ],
+                calc: (v) => {
+                    const tax = v.amount * (v.taxRate / 100);
+                    const total = v.amount + tax;
+                    return {
+                        mainLabel: 'Total Price (Incl. Tax)',
+                        mainValue: '$' + total.toFixed(2),
+                        rows: [
+                            { label: 'Base Amount', val: '$' + v.amount.toFixed(2) },
+                            { label: 'Calculated Tax Amount', val: '$' + tax.toFixed(2) },
+                            { label: 'Effective Rate', val: v.taxRate + '%' }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'vat',
+                title: 'VAT Calculator',
+                cat: 'sales',
+                icon: 'fa-file-invoice-dollar',
+                desc: 'Calculate Value Added Tax (VAT) inclusion or exclusion from gross totals.',
+                formula: 'Inclusive VAT = Gross Amount - (Gross Amount / (1 + Rate))',
+                example: '$120 Gross at 20% VAT -> Net = $100, VAT Amount = $20.',
+                inputs: [
+                    { id: 'amount', label: 'Amount ($)', type: 'number', default: 120 },
+                    { id: 'vatRate', label: 'VAT Rate (%)', type: 'number', default: 20 }
+                ],
+                calc: (v) => {
+                    const net = v.amount / (1 + (v.vatRate / 100));
+                    const vatAmount = v.amount - net;
+                    return {
+                        mainLabel: 'VAT Amount',
+                        mainValue: '$' + vatAmount.toFixed(2),
+                        rows: [
+                            { label: 'Net Amount (Excl. VAT)', val: '$' + net.toFixed(2) },
+                            { label: 'Gross Amount (Incl. VAT)', val: '$' + v.amount.toFixed(2) },
+                            { label: 'VAT Rate', val: v.vatRate + '%' }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'discount',
+                title: 'Discount Calculator',
+                cat: 'sales',
+                icon: 'fa-basket-shopping',
+                desc: 'Compute final promotional price and savings from percentage discounts.',
+                formula: 'Savings = Original Price × (Discount % / 100) | Final Price = Price - Savings',
+                example: '$150 item with 25% discount -> Savings = $37.50, Final Price = $112.50.',
+                inputs: [
+                    { id: 'price', label: 'Original Price ($)', type: 'number', default: 150 },
+                    { id: 'discount', label: 'Discount (%)', type: 'number', default: 25 }
+                ],
+                calc: (v) => {
+                    const savings = v.price * (v.discount / 100);
+                    const finalPrice = v.price - savings;
+                    return {
+                        mainLabel: 'Final Discounted Price',
+                        mainValue: '$' + finalPrice.toFixed(2),
+                        rows: [
+                            { label: 'Total Saved Amount', val: '$' + savings.toFixed(2) },
+                            { label: 'Original Price', val: '$' + v.price.toFixed(2) },
+                            { label: 'Discount Percentage', val: v.discount + '%' }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'breakeven',
+                title: 'Break-Even Calculator',
+                cat: 'profitability',
+                icon: 'fa-scale-balanced',
+                desc: 'Determine unit volume needed to cover fixed and variable business costs.',
+                formula: 'Break-Even Units = Fixed Costs / (Price Per Unit - Variable Cost Per Unit)',
+                example: 'Fixed Costs $5,000, Price $50, Variable Cost $30 -> Break-Even = 5,000 / (50 - 30) = 250 units.',
+                inputs: [
+                    { id: 'fixedCosts', label: 'Total Fixed Costs ($)', type: 'number', default: 5000 },
+                    { id: 'price', label: 'Price Per Unit ($)', type: 'number', default: 50 },
+                    { id: 'varCost', label: 'Variable Cost Per Unit ($)', type: 'number', default: 30 }
+                ],
+                calc: (v) => {
+                    const marginPerUnit = v.price - v.varCost;
+                    const units = marginPerUnit > 0 ? Math.ceil(v.fixedCosts / marginPerUnit) : 0;
+                    const revenueBreakEven = units * v.price;
+                    return {
+                        mainLabel: 'Break-Even Point (Units)',
+                        mainValue: units.toLocaleString() + ' Units',
+                        rows: [
+                            { label: 'Break-Even Sales Revenue', val: '$' + revenueBreakEven.toLocaleString() },
+                            { label: 'Contribution Margin / Unit', val: '$' + marginPerUnit.toFixed(2) },
+                            { label: 'Fixed Costs', val: '$' + v.fixedCosts.toLocaleString() }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'roi',
+                title: 'ROI Calculator (Return on Investment)',
+                cat: 'finance',
+                icon: 'fa-chart-pie',
+                desc: 'Evaluate profitability ratio of capital invested into business projects.',
+                formula: 'ROI % = ((Gain from Investment - Cost of Investment) / Cost of Investment) × 100',
+                example: 'Invested $10,000, returned $13,500. Net Gain = $3,500. ROI = 35%.',
+                inputs: [
+                    { id: 'cost', label: 'Initial Investment Cost ($)', type: 'number', default: 10000 },
+                    { id: 'returned', label: 'Total Return Value ($)', type: 'number', default: 13500 }
+                ],
+                calc: (v) => {
+                    const gain = v.returned - v.cost;
+                    const roi = v.cost > 0 ? (gain / v.cost) * 100 : 0;
+                    return {
+                        mainLabel: 'Return on Investment (ROI)',
+                        mainValue: roi.toFixed(2) + '%',
+                        isNegative: roi < 0,
+                        rows: [
+                            { label: 'Net Return Profit', val: '$' + gain.toLocaleString(undefined, {minimumFractionDigits: 2}) },
+                            { label: 'Investment Cost', val: '$' + v.cost.toLocaleString() },
+                            { label: 'Final Total Value', val: '$' + v.returned.toLocaleString() }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'loan',
+                title: 'Business Loan Calculator',
+                cat: 'finance',
+                icon: 'fa-building-columns',
+                desc: 'Estimate monthly loan payment and interest cost over a term period.',
+                formula: 'M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1 ]',
+                example: '$50,000 loan at 6% interest over 5 years (60 months) -> ~$966.64 / month.',
+                inputs: [
+                    { id: 'principal', label: 'Loan Amount ($)', type: 'number', default: 50000 },
+                    { id: 'rate', label: 'Annual Interest Rate (%)', type: 'number', default: 6 },
+                    { id: 'years', label: 'Loan Term (Years)', type: 'number', default: 5 }
+                ],
+                calc: (v) => {
+                    const monthlyRate = (v.rate / 100) / 12;
+                    const n = v.years * 12;
+                    let monthlyPayment = 0;
+                    if (monthlyRate > 0) {
+                        monthlyPayment = (v.principal * monthlyRate * Math.pow(1 + monthlyRate, n)) / (Math.pow(1 + monthlyRate, n) - 1);
+                    } else {
+                        monthlyPayment = v.principal / n;
+                    }
+                    const totalRepaid = monthlyPayment * n;
+                    const totalInterest = totalRepaid - v.principal;
+                    return {
+                        mainLabel: 'Monthly Payment',
+                        mainValue: '$' + monthlyPayment.toFixed(2),
+                        rows: [
+                            { label: 'Total Interest Payable', val: '$' + totalInterest.toFixed(2) },
+                            { label: 'Total Principal + Interest', val: '$' + totalRepaid.toFixed(2) },
+                            { label: 'Total Payments', val: n + ' Months' }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'simple-interest',
+                title: 'Simple Interest Calculator',
+                cat: 'finance',
+                icon: 'fa-calculator',
+                desc: 'Compute simple interest earnings or debt over specified time periods.',
+                formula: 'Interest = Principal × Rate × Time',
+                example: '$5,000 principal at 5% for 3 years -> Interest = 5000 × 0.05 × 3 = $750.',
+                inputs: [
+                    { id: 'principal', label: 'Principal Amount ($)', type: 'number', default: 5000 },
+                    { id: 'rate', label: 'Annual Rate (%)', type: 'number', default: 5 },
+                    { id: 'time', label: 'Time (Years)', type: 'number', default: 3 }
+                ],
+                calc: (v) => {
+                    const interest = v.principal * (v.rate / 100) * v.time;
+                    const total = v.principal + interest;
+                    return {
+                        mainLabel: 'Total Interest Earned',
+                        mainValue: '$' + interest.toFixed(2),
+                        rows: [
+                            { label: 'End Balance', val: '$' + total.toFixed(2) },
+                            { label: 'Principal Amount', val: '$' + v.principal.toFixed(2) }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'compound-interest',
+                title: 'Compound Interest Calculator',
+                cat: 'finance',
+                icon: 'fa-piggy-bank',
+                desc: 'Calculate growth of investments with annual compounding interest.',
+                formula: 'A = P(1 + r/n)^(nt)',
+                example: '$10,000 at 7% compounded annually for 10 years -> $19,671.51.',
+                inputs: [
+                    { id: 'principal', label: 'Initial Principal ($)', type: 'number', default: 10000 },
+                    { id: 'rate', label: 'Annual Rate (%)', type: 'number', default: 7 },
+                    { id: 'years', label: 'Investment Time (Years)', type: 'number', default: 10 }
+                ],
+                calc: (v) => {
+                    const total = v.principal * Math.pow(1 + (v.rate / 100), v.years);
+                    const interest = total - v.principal;
+                    return {
+                        mainLabel: 'Future Investment Value',
+                        mainValue: '$' + total.toLocaleString(undefined, {minimumFractionDigits: 2}),
+                        rows: [
+                            { label: 'Total Compound Interest', val: '$' + interest.toLocaleString(undefined, {minimumFractionDigits: 2}) },
+                            { label: 'Starting Principal', val: '$' + v.principal.toLocaleString() }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'selling-price',
+                title: 'Product Selling Price Calculator',
+                cat: 'sales',
+                icon: 'fa-sack-dollar',
+                desc: 'Determine price to charge to achieve a target profit margin goal.',
+                formula: 'Selling Price = Cost / (1 - Target Margin %)',
+                example: 'Cost $40, desired profit margin 30% -> Price = $40 / (1 - 0.30) = $57.14.',
+                inputs: [
+                    { id: 'cost', label: 'Cost of Goods ($)', type: 'number', default: 40 },
+                    { id: 'targetMargin', label: 'Target Margin Goal (%)', type: 'number', default: 30 }
+                ],
+                calc: (v) => {
+                    const targetDec = v.targetMargin / 100;
+                    const price = targetDec < 1 ? v.cost / (1 - targetDec) : 0;
+                    const profit = price - v.cost;
+                    return {
+                        mainLabel: 'Required Selling Price',
+                        mainValue: '$' + price.toFixed(2),
+                        rows: [
+                            { label: 'Profit Per Unit', val: '$' + profit.toFixed(2) },
+                            { label: 'Target Profit Margin', val: v.targetMargin + '%' },
+                            { label: 'Base Unit Cost', val: '$' + v.cost.toFixed(2) }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'ecommerce',
+                title: 'E-commerce Profit Calculator',
+                cat: 'profitability',
+                icon: 'fa-cart-shopping',
+                desc: 'Calculate net payout after product cost, ad spend, and gateway fees.',
+                formula: 'Net Profit = Revenue - Product Cost - Ad Spend - Payment Fees',
+                example: 'Price $100, Cost $30, Ad Spend $25, Gateway Fee $3 -> Net Profit = $42.',
+                inputs: [
+                    { id: 'price', label: 'Selling Price ($)', type: 'number', default: 100 },
+                    { id: 'cogs', label: 'Product Cost (COGS) ($)', type: 'number', default: 30 },
+                    { id: 'adCost', label: 'Ad CPA / Marketing ($)', type: 'number', default: 25 },
+                    { id: 'fee', label: 'Gateway Fee ($)', type: 'number', default: 3 }
+                ],
+                calc: (v) => {
+                    const totalCost = v.cogs + v.adCost + v.fee;
+                    const profit = v.price - totalCost;
+                    const margin = v.price > 0 ? (profit / v.price) * 100 : 0;
+                    return {
+                        mainLabel: 'Net Profit Per Sale',
+                        mainValue: '$' + profit.toFixed(2),
+                        isNegative: profit < 0,
+                        rows: [
+                            { label: 'Net Profit Margin', val: margin.toFixed(2) + '%' },
+                            { label: 'Total Acquisition & Product Cost', val: '$' + totalCost.toFixed(2) },
+                            { label: 'ROAS Return Multiple', val: (v.adCost > 0 ? (v.price / v.adCost).toFixed(2) + 'x' : 'N/A') }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'commission',
+                title: 'Commission Calculator',
+                cat: 'sales',
+                icon: 'fa-handshake',
+                desc: 'Calculate sales agent commission payouts and remaining revenue.',
+                formula: 'Commission = Total Sales Amount × (Commission Rate / 100)',
+                example: '$25,000 deal at 8% commission rate -> Payout = $2,000.',
+                inputs: [
+                    { id: 'sales', label: 'Total Sales Amount ($)', type: 'number', default: 25000 },
+                    { id: 'rate', label: 'Commission Rate (%)', type: 'number', default: 8 }
+                ],
+                calc: (v) => {
+                    const commission = v.sales * (v.rate / 100);
+                    const net = v.sales - commission;
+                    return {
+                        mainLabel: 'Commission Payout',
+                        mainValue: '$' + commission.toFixed(2),
+                        rows: [
+                            { label: 'Company Net Retained', val: '$' + net.toFixed(2) },
+                            { label: 'Gross Sales Deal', val: '$' + v.sales.toFixed(2) }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'operating-profit',
+                title: 'Operating Profit Calculator',
+                cat: 'profitability',
+                icon: 'fa-sliders',
+                desc: 'Calculate EBIT (Earnings Before Interest and Taxes) from operating activities.',
+                formula: 'Operating Profit = Gross Profit - Operating Expenses (OPEX)',
+                example: 'Gross Profit $80,000 - OPEX $45,000 -> Operating Profit = $35,000.',
+                inputs: [
+                    { id: 'grossProfit', label: 'Gross Profit ($)', type: 'number', default: 80000 },
+                    { id: 'opex', label: 'Operating Expenses (OPEX) ($)', type: 'number', default: 45000 }
+                ],
+                calc: (v) => {
+                    const opProfit = v.grossProfit - v.opex;
+                    return {
+                        mainLabel: 'Operating Profit (EBIT)',
+                        mainValue: '$' + opProfit.toLocaleString(undefined, {minimumFractionDigits: 2}),
+                        isNegative: opProfit < 0,
+                        rows: [
+                            { label: 'Gross Profit', val: '$' + v.grossProfit.toLocaleString() },
+                            { label: 'Operating Costs', val: '$' + v.opex.toLocaleString() }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'gross-profit',
+                title: 'Gross Profit Calculator',
+                cat: 'profitability',
+                icon: 'fa-wallet',
+                desc: 'Measure core profit remaining after direct product manufacturing expenses.',
+                formula: 'Gross Profit = Total Revenue - Cost of Goods Sold (COGS)',
+                example: 'Revenue $150,000, COGS $90,000 -> Gross Profit = $60,000.',
+                inputs: [
+                    { id: 'revenue', label: 'Total Revenue ($)', type: 'number', default: 150000 },
+                    { id: 'cogs', label: 'COGS ($)', type: 'number', default: 90000 }
+                ],
+                calc: (v) => {
+                    const gross = v.revenue - v.cogs;
+                    const margin = v.revenue > 0 ? (gross / v.revenue) * 100 : 0;
+                    return {
+                        mainLabel: 'Gross Profit',
+                        mainValue: '$' + gross.toLocaleString(undefined, {minimumFractionDigits: 2}),
+                        rows: [
+                            { label: 'Gross Margin Percentage', val: margin.toFixed(2) + '%' },
+                            { label: 'Total Revenue', val: '$' + v.revenue.toLocaleString() }
+                        ]
+                    };
+                }
+            },
+            {
+                id: 'net-profit',
+                title: 'Net Profit Calculator',
+                cat: 'profitability',
+                icon: 'fa-money-bill-wave',
+                desc: 'Calculate final bottom-line earnings after deducting taxes and interest.',
+                formula: 'Net Profit = Operating Profit - Interest Expenses - Taxes',
+                example: 'Operating Profit $50,000 - Interest $5,000 - Taxes $10,000 -> Net Profit = $35,000.',
+                inputs: [
+                    { id: 'opProfit', label: 'Operating Profit ($)', type: 'number', default: 50000 },
+                    { id: 'interest', label: 'Interest Expenses ($)', type: 'number', default: 5000 },
+                    { id: 'taxes', label: 'Taxes ($)', type: 'number', default: 10000 }
+                ],
+                calc: (v) => {
+                    const net = v.opProfit - v.interest - v.taxes;
+                    return {
+                        mainLabel: 'Final Net Profit',
+                        mainValue: '$' + net.toLocaleString(undefined, {minimumFractionDigits: 2}),
+                        isNegative: net < 0,
+                        rows: [
+                            { label: 'Operating Profit', val: '$' + v.opProfit.toLocaleString() },
+                            { label: 'Deductions (Interest + Tax)', val: '$' + (v.interest + v.taxes).toLocaleString() }
+                        ]
+                    };
+                }
+            }
+        ];
+
+        /**
+         * STATE & SYSTEM LOGIC
+         */
+        let activeCalc = null;
+        let activeCategory = 'all';
+
+        // Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            renderGrid();
+            initSearchAndCategory();
+            initFAQ();
+            initHistory();
+            checkHashRoute();
+        });
+
+        // Theme Switcher
+        function initTheme() {
+            const btn = document.getElementById('themeToggle');
+            const isDark = localStorage.getItem('bizcalc_theme') === 'dark';
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                btn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+            btn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                const darkNow = document.documentElement.classList.contains('dark');
+                localStorage.setItem('bizcalc_theme', darkNow ? 'dark' : 'light');
+                btn.innerHTML = darkNow ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+            });
+        }
+
+        // Render Grid Cards
+        function renderGrid(filterQuery = '') {
+            const grid = document.getElementById('calcGrid');
+            grid.innerHTML = '';
+
+            const filtered = CALCULATORS.filter(item => {
+                const matchesCat = activeCategory === 'all' || item.cat === activeCategory;
+                const matchesSearch = item.title.toLowerCase().includes(filterQuery.toLowerCase()) || 
+                                      item.desc.toLowerCase().includes(filterQuery.toLowerCase());
+                return matchesCat && matchesSearch;
+            });
+
+            document.getElementById('calcCount').textContent = `${filtered.length} Calculators Available`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No business calculators found matching your search.</div>`;
+                return;
+            }
+
+            filtered.forEach(calc => {
+                const card = document.createElement('div');
+                card.className = 'calc-card';
+                card.onclick = () => openCalculator(calc.id);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="calc-icon"><i class="fa-solid ${calc.icon}"></i></div>
+                        <div class="calc-title">${calc.title}</div>
+                        <div class="calc-desc">${calc.desc}</div>
+                    </div>
+                    <div class="calc-footer">
+                        <span>Calculate Now</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Search & Category Handler
+        function initSearchAndCategory() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', (e) => {
+                renderGrid(e.target.value);
+            });
+
+            const catBtns = document.querySelectorAll('.cat-btn');
+            catBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    catBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeCategory = btn.dataset.cat;
+                    renderGrid(searchInput.value);
+                });
+            });
+        }
+
+        // Calculator Modal Logic
+        function openCalculator(calcId) {
+            const calc = CALCULATORS.find(c => c.id === calcId);
+            if (!calc) return;
+
+            activeCalc = calc;
+            window.location.hash = calcId;
+
+            document.getElementById('modalTitle').textContent = calc.title;
+            document.getElementById('modalCategory').textContent = calc.cat;
+            document.getElementById('modalIcon').innerHTML = `<i class="fa-solid ${calc.icon}"></i>`;
+            document.getElementById('modalFormula').textContent = calc.formula;
+            document.getElementById('modalExample').textContent = calc.example;
+
+            // Generate Inputs
+            const container = document.getElementById('modalInputs');
+            container.innerHTML = '';
+
+            calc.inputs.forEach(inp => {
+                const group = document.createElement('div');
+                group.className = 'input-group';
+                group.innerHTML = `
+                    <label for="inp_${inp.id}">${inp.label}</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="inp_${inp.id}" class="input-field" value="${inp.default}">
+                    </div>
+                `;
+                container.appendChild(group);
+            });
+
+            // Action Buttons
+            const btnBox = document.createElement('div');
+            btnBox.className = 'btn-group';
+            btnBox.innerHTML = `
+                <button class="btn-calc" onclick="runCalculation()">Calculate Result</button>
+                <button class="btn-reset" onclick="resetCalculator()">Reset</button>
+            `;
+            container.appendChild(btnBox);
+
+            document.getElementById('calcModal').classList.add('active');
+            runCalculation();
+        }
+
+        function runCalculation() {
+            if (!activeCalc) return;
+
+            const values = {};
+            activeCalc.inputs.forEach(inp => {
+                const el = document.getElementById(`inp_${inp.id}`);
+                values[inp.id] = parseFloat(el.value) || 0;
+            });
+
+            const res = activeCalc.calc(values);
+
+            const valEl = document.getElementById('mainResultValue');
+            document.getElementById('mainResultLabel').textContent = res.mainLabel;
+            valEl.textContent = res.mainValue;
+            
+            if (res.isNegative) {
+                valEl.classList.add('negative');
+            } else {
+                valEl.classList.remove('negative');
+            }
+
+            const breakdown = document.getElementById('resultBreakdown');
+            breakdown.innerHTML = '';
+            if (res.rows) {
+                res.rows.forEach(r => {
+                    const row = document.createElement('div');
+                    row.className = 'breakdown-row';
+                    row.innerHTML = `<span>${r.label}</span><span>${r.val}</span>`;
+                    breakdown.appendChild(row);
+                });
+            }
+
+            // Add to LocalStorage History
+            saveHistory(activeCalc.title, res.mainLabel + ': ' + res.mainValue);
+        }
+
+        function resetCalculator() {
+            if (!activeCalc) return;
+            activeCalc.inputs.forEach(inp => {
+                const el = document.getElementById(`inp_${inp.id}`);
+                if (el) el.value = inp.default;
+            });
+            runCalculation();
+        }
+
+        // Close Modal
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('calcModal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) closeModal();
+        });
+
+        function closeModal() {
+            document.getElementById('calcModal').classList.remove('active');
+            window.location.hash = '';
+            activeCalc = null;
+        }
+
+        // History Management
+        function saveHistory(title, resultStr) {
+            let history = JSON.parse(localStorage.getItem('bizcalc_history') || '[]');
+            const newItem = {
+                title,
+                result: resultStr,
+                time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            };
+            history.unshift(newItem);
+            if (history.length > 8) history.pop();
+            localStorage.setItem('bizcalc_history', JSON.stringify(history));
+            renderHistory();
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('historyList');
+            const history = JSON.parse(localStorage.getItem('bizcalc_history') || '[]');
+            if (history.length === 0) {
+                list.innerHTML = `<div style="color:var(--text-muted); font-size:0.85rem; text-align:center; padding:20px;">No calculations performed yet.</div>`;
+                return;
+            }
+            list.innerHTML = '';
+            history.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'history-item';
+                div.innerHTML = `
+                    <div>
+                        <strong>${item.title}</strong>
+                        <span style="color:var(--text-muted); margin-left:8px;">${item.time}</span>
+                    </div>
+                    <div style="color:var(--accent-primary); font-weight:700;">${item.result}</div>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function initHistory() {
+            renderHistory();
+            document.getElementById('btnClearHistory').addEventListener('click', () => {
+                localStorage.removeItem('bizcalc_history');
+                renderHistory();
+            });
+        }
+
+        // Copy Result Clipboard
+        document.getElementById('btnCopyResult').addEventListener('click', () => {
+            const label = document.getElementById('mainResultLabel').textContent;
+            const val = document.getElementById('mainResultValue').textContent;
+            const textToCopy = `${activeCalc ? activeCalc.title : 'Result'}: ${label} = ${val}`;
+            
+            document.execCommand('copy');
+            navigator.clipboard?.writeText(textToCopy);
+
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        });
+
+        // FAQ Accordion
+        function initFAQ() {
+            const items = document.querySelectorAll('.faq-item');
+            items.forEach(item => {
+                const q = item.querySelector('.faq-question');
+                q.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+        }
+
+        // Hash Routing for direct access
+        function checkHashRoute() {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                openCalculator(hash);
+            }
+        }
+
+        // Back To Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
